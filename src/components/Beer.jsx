@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 
 // placeholder
-import placeholder from '../placeholder.png';
+import placeholder from "../placeholder.png";
 
 const BeerCard = styled.div`
   display: flex;
-  flex-flow: column
+  flex-flow: column;
   align-items: center;
   border: 1px solid #aaa;
   border-radius: 10px;
   padding: 15px;
-  width: 250px;
+  width: 300px;
   margin: 15px;
   box-sizing: border-box;
-  background-color: rgb(28, 32, 34);
-  color: #ccc;
+  background-color: #ccc;
+  color: #333;
+  font-family: Roboto;
 `;
 
 const ImageWrapper = styled.div`
-  height: 200px;
+  height: 300px;
   width: 100%;
   padding: 15px;
 `;
@@ -27,7 +28,7 @@ const ImageWrapper = styled.div`
 const BeerImage = styled.img`
   height: 100%;
   width: 100%;
-  border: 3px inset #ce1919;
+  border: 3px inset #0f89b9;
   box-shadow: 0 0 5px 0 #555;
   box-sizing: border-box;
 `;
@@ -46,7 +47,8 @@ const InfoGroup = styled.div`
 const Label = styled.label`
   font-weight: bold;
   padding-right: 5px;
-  color: #fff;
+  color: #111;
+  text-decoration: underline;
 `;
 
 const Text = styled.p`
@@ -54,49 +56,41 @@ const Text = styled.p`
 `;
 
 export default function Beer({ beer }) {
-  const {
-    image_url,
-    name,
-    type,
-    brewer,
-    country,
-    category,
-    abv,
-  } = beer;
-  const [imgUrl, setImageUrl] = useState(image_url)
+  const { image_url, name, type, brewer, country, category, abv } = beer;
+  const [imgUrl, setImageUrl] = useState(image_url);
 
   return (
     <BeerCard>
       <ImageWrapper>
         <BeerImage
           src={imgUrl}
-          onError={(e) => setImageUrl(placeholder)}
+          onError={e => setImageUrl(placeholder)}
           alt={name}
         />
       </ImageWrapper>
       <BeerInfo>
         <InfoGroup>
-          <Label>Name: </Label>
+          <Label>Name:</Label>
           <Text>{name}</Text>
         </InfoGroup>
         <InfoGroup>
-          <Label>Type: </Label>
+          <Label>Type:</Label>
           <Text>{type}</Text>
         </InfoGroup>
         <InfoGroup>
-          <Label>Brewer: </Label>
+          <Label>Brewer:</Label>
           <Text>{brewer}</Text>
         </InfoGroup>
         <InfoGroup>
-          <Label>Country: </Label>
+          <Label>Country:</Label>
           <Text>{country}</Text>
         </InfoGroup>
         <InfoGroup>
-          <Label>Category: </Label>
+          <Label>Category:</Label>
           <Text>{category}</Text>
         </InfoGroup>
         <InfoGroup>
-          <Label>% Alchohol: </Label>
+          <Label>% Alcohol: </Label>
           <Text>{abv}</Text>
         </InfoGroup>
       </BeerInfo>
