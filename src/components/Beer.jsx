@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // placeholder
@@ -58,6 +58,10 @@ const Text = styled.p`
 export default function Beer({ beer }) {
   const { image_url, name, type, brewer, country, category, abv } = beer;
   const [imgUrl, setImageUrl] = useState(image_url);
+
+  useEffect(() => {
+    setImageUrl(image_url);
+  }, [image_url]);
 
   return (
     <BeerCard>
